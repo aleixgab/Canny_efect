@@ -9,9 +9,13 @@ def execute(image):
 
     gy = np.transpose(gx)
 
+
+
     sobleMat = image
-    for i in range(2,image.shape[0]-1):
-        for j in range(2, image.shape[1]-1):
+    returnMatGX = np.zeros((image.shape[0],image.shape[1]))
+    returnMatGY = np.zeros((image.shape[0],image.shape[1]))
+    for i in range(1,image.shape[0]-1):
+        for j in range(1, image.shape[1]-1):
 
             matGX = image[i-1:i+2, j-1:j+2] * gx
             sumGX = matGX.sum()
@@ -21,8 +25,7 @@ def execute(image):
             finalG = np.sqrt(sumGX * sumGX + sumGY * sumGY)
 
             sobleMat[i-1][j-1] = finalG
+            returnMatGX[i-1][j-1] = sumGX
+            returnMatGY[i-1][j-1] = sumGY
 
-
-    cv2.imshow("Sobel",np.uint8(sobleMat))
-
-    return np.uint8(sobleMat)
+    return np.uint8(sobleMat), returnMatGX, returnMatGY
