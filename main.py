@@ -5,7 +5,7 @@ import sobelFilter as sobel
 import cannyFilter as canny
 
 if __name__ == '__main__':
-    image = cv2.imread("redkite.jpg", cv2.IMREAD_GRAYSCALE)
+    image = cv2.imread("sonic.jpg", cv2.IMREAD_GRAYSCALE)
 
     cv2.imshow("Original", image)
 
